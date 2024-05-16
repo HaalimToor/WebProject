@@ -1,0 +1,90 @@
+/* styles.css */
+
+/* Common styles */
+.font-montserrat {
+  font-family: 'Montserrat', sans-serif;
+}
+
+/* Table styles */
+.table-header {
+  background-color: #edf2f7;
+}
+
+.table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+.table th,
+.table td {
+  border: 1px solid #e2e8f0;
+  padding: 8px;
+}
+
+.table th {
+  text-align: left;
+  font-weight: bold;
+}
+
+/* Grid view styles */
+.grid-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 1rem;
+}
+
+.grid-item {
+  padding: 1rem;
+  border: 1px solid #e2e8f0;
+  border-radius: 0.5rem;
+  background-color: #fff;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.grid-item .name {
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+}
+
+/* Button styles */
+.button {
+  padding: 0.5rem 1rem;
+  border-radius: 0.25rem;
+  background-color: #4299e1;
+  color: #fff;
+  cursor: pointer;
+}
+
+.button:hover {
+  background-color: #3182ce;
+}
+
+/* Input styles */
+.input {
+  padding: 0.5rem;
+  border: 1px solid #e2e8f0;
+  border-radius: 0.25rem;
+  width: 100%;
+}
+
+.input:focus {
+  outline: none;
+  border-color: #4299e1;
+}
+.btn-switch {
+  position: absolute;
+  top: 0;
+  right: 0;
+  margin-top: 1rem;
+  margin-right: 1rem;
+  padding: 0.5rem 1rem;
+  border-radius: 0.25rem;
+  background-color: #4299e1;
+  color: #fff;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.btn-switch:hover {
+  background-color: #3182ce;
+}

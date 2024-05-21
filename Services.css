@@ -1,0 +1,37 @@
+.service-grid {
+    display: flex;
+    flex-wrap:wrap;
+    justify-content: space-between;
+    margin: 100px; /* Add some gap from the top */
+}
+
+.service-item {
+    width: 25%;
+    height: 10%;
+    margin-bottom: 50px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    padding: 30px; /* Adjust the padding as needed */
+    box-sizing:border-box;
+    background-color: #f9f9f9; /* Add background color if needed */
+    margin-right: 10px;
+}
+
+.service-item img {
+    width: 100%;
+    border-radius: 5px;
+}
+
+.service-name {
+    margin: 20px 0px;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.service-workers {
+    color: #666;
+}
+h1{
+    margin-top: 100px;
+    text-align: center;
+}

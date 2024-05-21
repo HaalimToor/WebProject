@@ -1,0 +1,239 @@
+.container {
+    padding-top: 50px; /* Adjust spacing from the top */
+    padding-left: 30px; /* Add padding from the left */
+  }
+  
+  .title {
+    color: #333; /* Dark text color */
+    font-size: 24px; /* Larger font size for the title */
+    margin-bottom: 30px; /* Spacing below the title */
+  }
+  
+  .worker-list {
+    padding-left: 30px; /* Add padding from the left */
+  }
+  
+  .navbar {
+    padding: 10px 30px; /* Padding for the navbar */
+    background-color: #f2f2f2; /* Background color for the navbar */
+  }
+  
+  .navbar button:last-child {
+    margin-right: 0; /* Remove margin from the last button */
+  }
+  
+  .navbar button:hover {
+    background-color: #0056b3; /* Button background color on hover */
+  }
+  
+  .navbar button:focus {
+    outline: none; /* Remove focus outline */
+  }
+  
+  .buttons {
+    margin-bottom: 20px; /* Spacing below the buttons */
+  }
+  
+  .buttons button {
+    padding: 8px 16px; /* Padding for buttons */
+    border: none; /* Remove default button border */
+    border-radius: 4px; /* Rounded corners for buttons */
+    background-color: #007bff; /* Button background color */
+    color: #ffffff; /* Button text color */
+    cursor: pointer; /* Change cursor on hover */
+  }
+  
+  .buttons button:not(:first-child) {
+    margin-left: 30px; /* Add margin between buttons */
+  }
+  
+  .buttons button:hover {
+    background-color: #0056b3; /* Button background color on hover */
+  }
+  
+  .buttons button:focus {
+    outline: none; /* Remove focus outline */
+  }
+  
+  .worker-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px;
+    padding-right: 100px;
+    width: 70%; /* Adjust the width of the worker items */
+    border-radius: 8px; /* Rounded corners for worker items */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Drop shadow for worker items */
+    margin-bottom: 20px; /* Spacing between worker items */
+    margin-left: 90px; /* Add margin from the left */
+  }
+  
+  .light-row {
+    background-color: #ffffff; /* Light white color */
+  }
+  
+  .dark-row {
+    background-color: #f2f2f2; /* Grey color */
+  }
+  
+  .worker-details {
+    flex: 1; /* Grow to fill available space */
+  }
+  
+  .rating {
+    font-weight: bold; /* Bold font for the rating */
+  }
+
+
+
+
+
+
+  .container {
+    padding-top: 50px; /* Adjust spacing from the top */
+    padding-left: 50px; /* Add more padding from the left */
+ padding-right: 100px;
+  }
+  
+  .title {
+    color: #333; /* Dark text color */
+    font-size: 24px; /* Larger font size for the title */
+    text-align: center;
+    padding: 30px;
+    }
+
+  .navbar {
+    padding: 30px 0; /* Padding for the navbar */
+    background-color: #f2f2f2; /* Background color for the navbar */
+    text-align: center; /* Center align navbar buttons */
+  }
+  
+  .navbar button {
+    padding: 20px 29px; /* Padding for buttons */
+    margin: 0 10px; /* Add margin between buttons */
+    border: none; /* Remove default button border */
+    border-radius: 4px; /* Rounded corners for buttons */
+    background-color: #1c3d5f; /* Button background color */
+    color: #ffffff; /* Button text color */
+    cursor: pointer; /* Change cursor on hover */
+  }
+  
+  .worker-item {
+    padding-left: 80px; /* Add more padding from the left */
+  }
+  
+  .light-row {
+    background-color: #ffffff; /* Light white color */
+  }
+  
+  .dark-row {
+    background-color: #f2f2f2; /* Grey color */
+  }
+   
+  h3{
+    padding-left: 100px;
+  }
+
+
+
+
+
+  .rating-bar {
+    width: 100px; /* Adjust the width as needed */
+    height: 10px; /* Adjust the height as needed */
+    background-color: rgb(119, 83, 83); /* Background color of the rating bar */
+    border-radius: 5px; /* Rounded corners for the rating bar */
+  }
+  
+  .colored-line {
+    height: 100%;
+    border-radius: 5px; /* Rounded corners for the colored line */
+  }
+  
+
+/* Responsive styles */
+@media(max-width: 1160px) {
+
+  .worker-item {
+    margin-left: 70px; /* Add margin from the left */
+    padding-left: 20px; /* Adjust padding from the left for smaller screens */
+  }
+  h3{
+    padding-left: 80px;
+  }
+}
+
+@media(max-width: 800px) {
+
+  .worker-item {
+    margin-left: 50px; /* Add margin from the left */
+  }
+  
+  h3{
+    padding-left: 60px;
+  }
+}
+
+
+@media(max-width: 700px) {
+
+  .worker-item {
+    margin-left: 30px; /* Add margin from the left */
+  }
+  h3{
+    padding-left: 40px;
+  }
+}
+
+@media(max-width: 570px) {
+
+  .worker-item {
+    margin-left: 20px; /* Add margin from the left */
+  }
+  h3{
+    padding-left: 25px;
+  }
+}
+
+@media(max-width: 500px) {
+
+  .worker-item {
+    margin-left: 15px; /* Add margin from the left */
+  }
+  h3{
+    padding-left: 20px;
+  }
+
+  .navbar button {
+    padding: 10px 10px; /* Padding for buttons */
+    margin-top: 10px; /* Margin between buttons */
+  }
+}
+
+
+
+@media(max-width: 1500px) {
+
+  .navbar button {
+    padding: 15px 20px; /* Padding for buttons */
+    margin-right: 10px; /* Margin between buttons */
+  }
+  
+}
+
+@media(max-width: 1348px) {
+
+  .navbar button {
+    padding: 15px 20px; /* Padding for buttons */
+    margin-top: 10px; /* Margin between buttons */
+  }
+  
+}
+@media(max-width: 760px) {
+
+  .navbar button {
+    padding: 15px 20px; /* Padding for buttons */
+    margin-top: 10px; /* Margin between buttons */
+  }
+  
+}

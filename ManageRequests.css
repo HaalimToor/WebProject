@@ -1,0 +1,187 @@
+.navbar {
+    padding: 30px 0; /* Padding for the navbar */
+    background-color: #f2f2f2; /* Background color for the navbar */
+    text-align: center; /* Center align navbar buttons */
+}
+
+.navbar button {
+    padding: 20px 29px; /* Padding for buttons */
+    margin: 0 10px; /* Add margin between buttons */
+    border: none; /* Remove default button border */
+    border-radius: 4px; /* Rounded corners for buttons */
+    background-color: #1c3d5f; /* Button background color */
+    color: #ffffff; /* Button text color */
+    cursor: pointer; /* Change cursor on hover */
+}
+
+.nextButton , .assignButton , .setButton , .okButton{
+    margin-top: 80px;
+    padding: 10px 10px; /* Padding for buttons */
+    margin: 0 10px; /* Add margin between buttons */
+    border: none; /* Remove default button border */
+    border-radius: 4px; /* Rounded corners for buttons */
+    background-color: #1c3d5f; /* Button background color */
+    color: #ffffff; /* Button text color */
+    cursor: pointer; /* Change cursor on hover */
+}
+.setButton{
+    padding: 14px 14px; /* Padding for buttons */
+    margin-left: 200px;
+    margin-bottom: 100px;;
+}
+.nextButton:hover{
+    background-color: #0056b3;
+
+}
+
+.okButton{
+    margin-left: 700px;
+    margin-top: 30px;
+    background-color: #4693e6;
+    
+}
+.navbar-nav {
+    margin-top: 10px; /* Add margin above navbar buttons */
+}
+
+.buttons button:not(:first-child) {
+    margin-left: 30px; /* Add margin between buttons */
+}
+
+.buttons button:hover {
+    background-color: #0056b3; /* Button background color on hover */
+}
+
+.buttons button:focus {
+    outline: none; /* Remove focus outline */
+}
+
+
+.btn-container {
+    margin-top: 10px;
+}
+
+/* Adjust table styles */
+table {
+    margin-top: 10px;
+    width: 70%;
+    margin-left: 180px;
+    margin-bottom: 50px;;
+}
+td, th {
+    height: 50px;
+    text-align: center;
+  }
+tr:hover {
+    background-color: #2765a3 ;
+    color: white;
+}
+.noWorker{
+    margin-left: 50px;
+    font-size: 18px;
+    margin-top: -10px;
+}
+h1{
+    text-align: center;
+}
+.totalreq{
+    padding-left: 20px;
+}
+.reqatt{
+    font-weight: bold;
+    font-size: 17px;
+}
+.reqHeading{
+    padding-left: 250px;
+    padding-top: 20px;
+}
+.currentrequest{
+    padding-left: 220px;
+}
+.even-row {
+    background-color: #f2f2f2; /* Light gray background for even rows */
+}
+
+.odd-row {
+    background-color: #ffffff; /* White background for odd rows */
+}
+
+.conMessage{
+    background-color: #1c3d5f;
+    text-align: center;
+    color: white;
+    font-size: 18px;
+    margin: 50px 0;
+    padding: 30px
+}
+
+
+
+@media(max-width: 500px) {
+
+  
+    .navbar button {
+      padding: 10px 10px; /* Padding for buttons */
+      margin-top: 10px; /* Margin between buttons */
+    }
+  }
+  
+  
+  
+  @media(max-width: 1500px) {
+  
+    .navbar button {
+      padding: 15px 20px; /* Padding for buttons */
+      margin-right: 10px; /* Margin between buttons */
+    }
+    
+  }
+  
+  @media(max-width: 1348px) {
+  
+    .navbar button {
+      padding: 15px 20px; /* Padding for buttons */
+      margin-top: 10px; /* Margin between buttons */
+    }
+    
+  }
+  @media(max-width: 760px) {
+  
+    .navbar button {
+      padding: 15px 20px; /* Padding for buttons */
+      margin-top: 10px; /* Margin between buttons */
+    }
+    
+  }
+  @media(max-width: 700px) {
+    .currentrequest{
+        padding-left: 180px;
+    }
+    .reqHeading{
+        padding-left: 200px;
+    }
+    
+  }
+  
+  @media(max-width: 600px) {
+    .currentrequest{
+        padding-left: 100px;
+    }
+    .reqHeading{
+        padding-left: 120px;
+    }
+    
+  }
+
+
+  @media(max-width: 900px) {
+    table {
+        width: 70%;
+        margin-left: 100px;
+        margin-bottom: 50px;;
+    }
+    td, th {
+        height: 50px;
+        text-align: center;
+      } 
+}

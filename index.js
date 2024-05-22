@@ -104,13 +104,29 @@ const ServiceSchema = new mongoose.Schema({
 
 const Service = mongoose.model('services', ServiceSchema);
 
-// Ensure the uploads directory exists
+app.get('/getServices', async (req, res) => {
+    try {
+      const services = await Service.find({});
+      const serviceData = await Promise.all(services.map(async service => {
+        const workerCount = await WorkerModel.countDocuments({ department: service.name });
+        return {
+          ...service.toObject(),
+          workers: workerCount
+        };
+      }));
+  
+      res.json(serviceData);
+    } catch (error) {
+      console.error('Error fetching services:', error);
+      res.status(500).json({ error: 'Internal Server Error' });
+    }
+  });
+
 const uploadsDir = path.join(__dirname, 'uploads');
 if (!fs.existsSync(uploadsDir)) {
   fs.mkdirSync(uploadsDir);
 }
 
-// Configure multer for file uploads
 const storage = multer.diskStorage({
   destination: (req, file, cb) => {
     cb(null, 'uploads/');
@@ -120,26 +136,19 @@ const storage = multer.diskStorage({
   }
 });
 
-const upload = multer({ storage });
+const fileFilter = (req, file, cb) => {
+    if (file.mimetype === 'image/jpeg' || file.mimetype === 'image/png' || file.mimetype === 'image/jpg') {
+      cb(null, true);
+    } else {
+      cb(new Error('Only .jpeg, .jpg, and .png files are allowed!'), false);
+    }
+};
 
-app.get('/getServices', async (req, res) => {
-  try {
-    const services = await Service.find({});
-    const serviceData = await Promise.all(services.map(async service => {
-      const workerCount = await WorkerModel.countDocuments({ department: service.name });
-      return {
-        ...service.toObject(),
-        workers: workerCount
-      };
-    }));
 
-    res.json(serviceData);
-  } catch (error) {
-    console.error('Error fetching services:', error);
-    res.status(500).json({ error: 'Internal Server Error' });
-  }
+const upload = multer({ 
+    storage: storage,
+    fileFilter: fileFilter
 });
-app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 
 app.post('/addService', upload.single('image'), async (req, res) => {
   try {
@@ -156,9 +165,31 @@ app.post('/addService', upload.single('image'), async (req, res) => {
   }
 });
 
+
+app.delete('/deleteService', async (req, res) => {
+    const { name } = req.body;
+    console.log('Received request to delete service:', name); // Log the service name
+   
+    if (!name) {
+      return res.status(400).json({ error: 'Service name not provided' });
+    }
+  
+    try {
+      const result = await Service.deleteOne({ name });
+  
+      if (result.deletedCount === 0) {
+        return res.status(404).json({ message: 'Service not found' });
+      }
+  
+      res.json({ message: 'Service deleted successfully' });
+    } catch (error) {
+      console.error('Error deleting service:', error);
+      res.status(500).json({ error: 'Internal Server Error' });
+    }
+  });
+
 app.listen(8080, () => {
   console.log('Server is running on port 8080');
 });
-
 
 

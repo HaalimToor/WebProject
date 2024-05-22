@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-//import 'bootstrap/dist/css/bootstrap.min.css';  // Import Bootstrap CSS
-import './ManageRequests.css'
+import './ManageRequests.css';
+
 const ManageRequests = () => {
     const [requests, setRequests] = useState([]);
     const [workers, setWorkers] = useState([]);
@@ -9,6 +9,7 @@ const ManageRequests = () => {
     const [currentRequestIndex, setCurrentRequestIndex] = useState(0);
     const [selectedWorker, setSelectedWorker] = useState(null);
     const [confirmationMessage, setConfirmationMessage] = useState(null);
+    const [errorMessage, setErrorMessage] = useState(null);
     const [isFirstRequest, setIsFirstRequest] = useState(true);
 
     useEffect(() => {
@@ -46,8 +47,16 @@ const ManageRequests = () => {
     };
 
     const handleAssignClick = (worker) => {
+        const currentRequest = requests[currentRequestIndex];
+
+        if (worker.department !== currentRequest.serviceType) {
+            setErrorMessage(`Worker's department (${worker.department}) does not match the requested service type (${currentRequest.serviceType}).`);
+            return;
+        }
+
         setSelectedWorker(worker);
         setConfirmationMessage(null);
+        setErrorMessage(null);
     };
 
     const handleFormSubmit = (event) => {
@@ -81,7 +90,6 @@ const ManageRequests = () => {
             });
     };
 
-
     const renderWorkerForm = () => {
         if (!selectedWorker) return null;
 
@@ -110,10 +118,9 @@ const ManageRequests = () => {
         if (filteredWorkers.length === 0) {
             return <>
                 <h2 className='title'>Available Workers for {selectedServiceType} department</h2>
-                <div className='noWorker'>No free workers available for {selectedServiceType} department</div>;
-        
+                <div className='noWorker'>No free workers available for {selectedServiceType} department</div>
             </>
-            }
+        }
     
         return (
             <div>
@@ -148,73 +155,83 @@ const ManageRequests = () => {
         }
 
         const currentRequest = requests[currentRequestIndex];
+        return (
+            <>
+                <h2 className='reqHeading'>Current Request</h2>
+                <div className="currentrequest">
+                    <p><span className='reqatt'>Client Name:</span> {currentRequest.clientName}</p>
+                    <p><span className='reqatt'>Service Type: </span> {currentRequest.serviceType}</p>
+                    <p><span className='reqatt'>Address: </span> {currentRequest.address}</p>
+                    {!isFirstRequest && <button className="nextButton" onClick={handlePreviousRequest}>Previous Request</button>}
+                    <button className="nextButton" onClick={handleNextRequest}>Next Request</button>
+                </div>
+            </>
+        );
+    };
+
+    const getServiceTypes = () => {
+        const departmentSet = new Set(workers.map(worker => worker.department));
+        const departmentList = Array.from(departmentSet);
+
+        return (
+            <div className="navbar-nav">
+                {departmentList.map((department, index) => (
+                    <button
+                        key={index}
+                        className={`btn btn-outline-primary ${selectedServiceType === department ? 'active' : ''}`}
+                        onClick={() => handleServiceTypeClick(department)}
+                    >
+                        {department}
+                    </button>
+                ))}
+            </div>
+        );
+    };
+
+    const handleConfirmationOk = () => {
+        setConfirmationMessage(null);
+    };
+
+    const handleErrorOk = () => {
+        setErrorMessage(null);
+    };
+
+    const totalRequests = requests.length;
+
     return (
         <>
-         <h2 className='reqHeading'>Current Request</h2>
-        <div className="currentrequest"> 
-           
-            <p ><span className='reqatt'>Client Name:</span> {currentRequest.clientName}</p>
-            <p><span className='reqatt'>Service Type: </span> {currentRequest.serviceType}</p>
-            <p><span className='reqatt'> Address: </span> {currentRequest.address}
-            </p>{!isFirstRequest && <button className="nextButton" onClick={handlePreviousRequest}>Previous Request</button>}
-            <button className="nextButton" onClick={handleNextRequest}>Next Request</button>
+            <nav className="navbar navbar-expand-lg navbar-light bg-light">
+                <div className="navbar-nav">
+                    {getServiceTypes()}
+                </div>
+            </nav>
 
-        </div>
+            <h1>Manage Requests</h1>
+            <h2 className='totalreq'>Total Requests: {totalRequests}</h2> 
+            
+            <div>
+                {getCurrentRequest()}
+                {renderWorkers()}
+                {renderWorkerForm()}
+                {confirmationMessage && (
+                    <div className='conMessage'>
+                        {confirmationMessage}
+                        <div>
+                            <button className='okButton' onClick={handleConfirmationOk}>OK</button>
+                        </div>
+                    </div>
+                )}
+                {errorMessage && (
+                    <div className='errorMessage'>
+                        {errorMessage}
+                        <div>
+                            <button className='okButton' onClick={handleErrorOk}>OK</button>
+                        </div>
+                    </div>
+                )}
+            </div>
         </>
     );
-};
-
-const getServiceTypes = () => {
-    const departmentSet = new Set(workers.map(worker => worker.department));
-    const departmentList = Array.from(departmentSet);
-
-    return (
-        <div className="navbar-nav">
-            {departmentList.map((department, index) => (
-                <button
-                    key={index}
-                    className={`btn btn-outline-primary ${selectedServiceType === department ? 'active' : ''}`}
-                    onClick={() => handleServiceTypeClick(department)}
-                >
-                    {department}
-                </button>
-            ))}
-        </div>
-    );
-};
-
-const handleConfirmationOk = () => {
-    setConfirmationMessage(null);
-};
-const totalRequests = requests.length; // Get the total number of requests
-
-return (
-    <>
-        <nav className="navbar navbar-expand-lg navbar-light bg-light">
-            <div className="navbar-nav">
-                {getServiceTypes()}
-            </div>
-        </nav>
-
-        <h1 >Manage Requests </h1>
-        <h2 className='totalreq'>Total Requests: {totalRequests}</h2> 
-            
-        <div>
-            {getCurrentRequest()}
-            {renderWorkers()}
-            {renderWorkerForm()}
-            {confirmationMessage && (
-                <div class='conMessage'>
-                    {confirmationMessage}
-                    <div>
-                        <button className='okButton' onClick={handleConfirmationOk}>OK</button>
-
-                    </div>
-                </div>
-            )}
-        </div>
-    </>
-);
 };
 
 export default ManageRequests;
